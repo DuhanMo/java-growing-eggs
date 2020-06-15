@@ -1,10 +1,11 @@
 package com.kh.eat_game.container.view;
 
-
 import com.kh.eat_game.container.model.vo.Food;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 public class MainFrame extends JFrame {
@@ -17,14 +18,79 @@ public class MainFrame extends JFrame {
         setSize(700, 700);
         setLocationRelativeTo(null);
         setResizable(false);
-        setVisible(true);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel = new GamePanel();
-        this.add(panel, BorderLayout.CENTER);
+        add(panel, BorderLayout.CENTER);
+
+        setVisible(true);
         gThread = new GameThread();
         gThread.start(); //run() 메소드 자동실행!!
+        addKeyListener(new KeyListener() {
+
+            @Override
+
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+
+            public void keyReleased(KeyEvent e) {
+
+                //눌러진 키가 무엇인지 알아내기
+
+                int keyCode = e.getKeyCode();
+
+                switch (keyCode) {
+
+                    case KeyEvent.VK_LEFT:
+                    case KeyEvent.VK_RIGHT:
+
+                        panel.dx = 0; //원랜 getsetter 만들어야함
+
+                        break;
+
+
+                }
+
+                //방향키 2개 구분
+
+            }
+
+            @Override
+
+            public void keyPressed(KeyEvent e) {
+
+                //눌러진 키가 무엇인지 알아내기
+
+                int keyCode = e.getKeyCode();
+
+                switch (keyCode) {
+
+                    case KeyEvent.VK_LEFT:
+
+                        panel.dx = -8; //원랜 getsetter 만들어야함
+
+                        break;
+
+                    case KeyEvent.VK_RIGHT:
+
+                        panel.dx = 8;
+
+                        break;
+
+
+
+                }
+
+                //방향키 2개 구분
+
+            }
+
+        });
     }
-    static class GamePanel extends  JPanel {
+      class GamePanel extends  JPanel {
         Image imgBack, imgPlayer, imgFood;  // 화면 위 이미지 객체 참조변수
         int width, height; // 패널의 사이즈
         int x, y, w, h;   // x,y 플레이어 중심좌표, w,h 이미지 절반 폭
@@ -35,13 +101,13 @@ public class MainFrame extends JFrame {
         public GamePanel() {
             // 이미지를 로드하기 위한 클래스, 객체를 생성하는게 아니라 정적메소드를 제공
             Toolkit toolkit = Toolkit.getDefaultToolkit();
-            imgBack = toolkit.getImage("images/back.png");
+            imgBack = toolkit.getImage("images/wall.jpg");
             imgPlayer = toolkit.getImage("images/dog.png");
-            imgFood = toolkit.getImage("image/meat.png");
+            imgFood = toolkit.getImage("images/meat.png");
         }
 
         @Override
-        public void paintComponent(Graphics g) { // 스윙 컴포넌트가 자신을 그리는 메소드
+        protected void paintComponent(Graphics g) { // 스윙 컴포넌트가 자신을 그리는 메소드
             if (width == 0 || height == 0) {
                 width = getWidth();
                 height = getHeight();
@@ -54,14 +120,14 @@ public class MainFrame extends JFrame {
                 w = 64;
                 h = 64;
             }
-
             g.drawImage(imgBack, 0, 0, this);
+
             for (Food f : food) {
                 g.drawImage(f.getImg(), f.getX() - f.getW(), f.getY() - f.getH(), this);
             }
 
             g.drawImage(imgPlayer, x - w, y - h, this);
-            g.setFont(new Font(null, Font.BOLD,20));
+            g.setFont(new Font(null,Font.BOLD,20));
             g.setColor(Color.white);
             g.drawString("Score : " + score,10,20);
         }
@@ -78,7 +144,7 @@ public class MainFrame extends JFrame {
             if(x < w) x = w;
             if(x > width - w) x = width - w;
         }
-        void makeEnemy() { // 음식 생성 메소드
+        void makeFood() { // 음식 생성 메소드
             if (width == 0 || height == 0) return;
             Random rnd = new Random();// 1/50확률로 음식 생성
             int n = rnd.nextInt(50);
@@ -115,8 +181,7 @@ public class MainFrame extends JFrame {
         public void run() {
             while (true) {
                 //음식 객체 만들어내는 기능 메소드 호출
-                panel.makeEnemy();
-
+                panel.makeFood();
                 //GamePanel의 플레이어 좌표 변경
 
                 //panel.x += -1;// 객체의 멤버값 변경은

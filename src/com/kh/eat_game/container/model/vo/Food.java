@@ -8,13 +8,13 @@ import java.util.Random;
 
 public class Food {
 
-    Image img; //이미지 참조변수
-    int x, y; //이미지 중심 좌표
-    int w, h; //이미지 절반폭, 절반높이
-    int dy; //적군의 변화량
-    int width, height; //화면(panel)의 사이즈
+     Image img; //이미지 참조변수
+     int x, y; //이미지 중심 좌표
+     int w, h; //이미지 절반폭, 절반높이
+     int dy; //적군의 변화량
+     int width, height; //화면(panel)의 사이즈
     //본인 객체가 음식을 먹거나 음식이 화면밖에 나가거나의 여부
-    boolean isDead = false;
+     boolean isDead = false;
 
     public Food(Image imgFood, int width, int height) {
         this.width = width;
@@ -29,7 +29,7 @@ public class Food {
         x = rnd.nextInt(width - w * 2) + w; //w ~ width - w
         // 화면 밖에서부터 떨어지는것처럼 보이게끔
         y = -h;
-        dy = +rnd.nextInt(15) + 1;//떨어지는 속도 랜덤설정
+        dy = rnd.nextInt(15) + 1;//떨어지는 속도 랜덤설정
     }
 
     public void move() { // Food의 움직이는 기능 메소드
