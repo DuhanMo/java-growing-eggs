@@ -7,6 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainFrame extends JFrame {
+
     GamePanel panel;
     GameThread gThread;
     ExitThread exitThread;
@@ -19,7 +20,7 @@ public class MainFrame extends JFrame {
         this.setSize(700, 700);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new GamePanel();
         this.add(panel, BorderLayout.CENTER);
@@ -32,8 +33,6 @@ public class MainFrame extends JFrame {
         // 타이머 쓰레드 객체로 가져와서 그 안에 타이머변수 가져오고 스케쥴메소드 이용(인자값으로 타이머태스크 변수와 딜레이값 적용)
         // 딜레이 후에 수행내용 시작
         exitThread.getExitTimer().schedule(exitThread.getExitTask(), 8000);
-
-
 
         addKeyListener(new KeyListener() {
             @Override
@@ -70,6 +69,7 @@ public class MainFrame extends JFrame {
     class GameThread extends Thread {
         @Override
         public void run() {
+
             // 버튼 클릭시 게임 시작
 //            panel.sBtn.addActionListener(new ActionListener() {
 //                @Override

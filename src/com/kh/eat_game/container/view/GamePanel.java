@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GamePanel extends JPanel {
-//    JButton sBtn;
 
     Image imgBack, imgPlayer, imgFood;  // 화면 위 이미지 객체 참조변수
     int width, height; // 패널의 사이즈
@@ -18,9 +17,6 @@ public class GamePanel extends JPanel {
     int score = 0; // 점수
 
     public GamePanel() {
-//        sBtn = new JButton("S T A R T");
-//        sBtn.setPreferredSize(new Dimension(300, 100));
-//        this.add(sBtn);
 
         // 이미지를 로드하기 위한 클래스, 객체를 생성하는게 아니라 정적메소드를 제공
         Toolkit toolkit = Toolkit.getDefaultToolkit();
