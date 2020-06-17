@@ -90,7 +90,7 @@ public class GamePanel extends JPanel {
 
                 f.setDead(true); //충돌했음
 
-                score += 5;
+                score += 10;
 
             }
 

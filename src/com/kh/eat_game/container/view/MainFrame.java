@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
                 switch (keyCode) {
                     case KeyEvent.VK_LEFT:
                     case KeyEvent.VK_RIGHT:
-                        panel.dx = 0; //원랜 getsetter 만들어야함
+                        panel.dx = 0;
                         break;
                 }
                 //방향키 2개 구분
@@ -56,7 +56,7 @@ public class MainFrame extends JFrame {
                 int keyCode = e.getKeyCode();
                 switch (keyCode) {
                     case KeyEvent.VK_LEFT:
-                        panel.dx = -8; //원랜 getsetter 만들어야함
+                        panel.dx = -8;
                         break;
                     case KeyEvent.VK_RIGHT:
                         panel.dx = 8;
@@ -99,7 +99,7 @@ public class MainFrame extends JFrame {
             @Override
             public void run() {
                 System.out.println("게임을 종료합니다. ");
-                System.out.println(GamePanel.score);
+                System.out.println(panel.score);
                 System.exit(0);
 
             }
