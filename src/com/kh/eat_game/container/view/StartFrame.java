@@ -28,7 +28,7 @@ public class StartFrame {
         startFrame.setLayout(null);
 
 
-        JButton sBtn = new JButton("START");
+        JButton sBtn = new JButton("제한시간 20초!!  START");
         sBtn.setBounds(200, 300, 300, 100);
 
         class ImagePanel extends JComponent {

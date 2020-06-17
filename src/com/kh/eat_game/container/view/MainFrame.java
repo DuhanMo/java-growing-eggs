@@ -32,7 +32,7 @@ public class MainFrame extends JFrame {
         exitThread = new ExitThread();
         // 타이머 쓰레드 객체로 가져와서 그 안에 타이머변수 가져오고 스케쥴메소드 이용(인자값으로 타이머태스크 변수와 딜레이값 적용)
         // 딜레이 후에 수행내용 시작
-        exitThread.getExitTimer().schedule(exitThread.getExitTask(), 8000);
+        exitThread.getExitTimer().schedule(exitThread.getExitTask(), 20000);
 
         addKeyListener(new KeyListener() {
             @Override
@@ -66,17 +66,10 @@ public class MainFrame extends JFrame {
             }
         });
     }
+
     class GameThread extends Thread {
         @Override
         public void run() {
-
-            // 버튼 클릭시 게임 시작
-//            panel.sBtn.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//
-//                }
-//            });
             while (true) {
                 //음식 객체 만들어내는 기능 메소드 호출
                 panel.makeFood();
@@ -105,7 +98,8 @@ public class MainFrame extends JFrame {
             // timertask
             @Override
             public void run() {
-                System.out.println("bbbbb");
+                System.out.println("게임을 종료합니다. ");
+                System.out.println(GamePanel.score);
                 System.exit(0);
 
             }
