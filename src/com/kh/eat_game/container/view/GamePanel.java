@@ -54,11 +54,12 @@ public class GamePanel extends JPanel {
 
     public void move() { // 플레이어 움직이기
         // 음식 떨어지기
-        for (int i = food.size() - 1; i > 0; i--) {
+        for (int i = 0; i < food.size(); i++) {
             Food f = food.get(i);
             f.move();
             if (f.isDead()) food.remove(i);
         }
+
         x += dx;
         //플레이어가 화면밖으로 나가지 않게끔
         if (x < w) x = w;
@@ -67,8 +68,8 @@ public class GamePanel extends JPanel {
 
     public void makeFood() { // 음식 생성 메소드
         if (width == 0 || height == 0) return;
-        Random rnd = new Random();// 1/50확률로 음식 생성
-        int n = rnd.nextInt(50);
+        Random rnd = new Random();// 1/20확률로 음식 생성
+        int n = rnd.nextInt(20);
         if (n == 0) {
             food.add(new Food(imgFood, width, height));
         }

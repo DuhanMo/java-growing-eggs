@@ -40,7 +40,7 @@ public class Food {
 
         // 화면 밖에서부터 떨어지는것처럼 보이게끔
         y = -h;
-        dy = rnd.nextInt(15) + 1;//떨어지는 속도 랜덤설정
+        dy = rnd.nextInt(12) + 3;//떨어지는 속도 랜덤설정
     }
 
     public void move() { // Food의 움직이는 기능 메소드

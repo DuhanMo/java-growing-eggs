@@ -32,7 +32,7 @@ public class MainFrame extends JFrame {
         exitThread = new ExitThread();
         // 타이머 쓰레드 객체로 가져와서 그 안에 타이머변수 가져오고 스케쥴메소드 이용(인자값으로 타이머태스크 변수와 딜레이값 적용)
         // 딜레이 후에 수행내용 시작
-        exitThread.getExitTimer().schedule(exitThread.getExitTask(), 20000);
+        exitThread.getExitTimer().schedule(exitThread.getExitTask(), 30000);
 
         addKeyListener(new KeyListener() {
             @Override
@@ -56,10 +56,10 @@ public class MainFrame extends JFrame {
                 int keyCode = e.getKeyCode();
                 switch (keyCode) {
                     case KeyEvent.VK_LEFT:
-                        panel.dx = -8;
+                        panel.dx = -12;
                         break;
                     case KeyEvent.VK_RIGHT:
-                        panel.dx = 8;
+                        panel.dx = 12;
                         break;
                 }
                 //방향키 2개 구분
@@ -100,7 +100,8 @@ public class MainFrame extends JFrame {
             public void run() {
                 System.out.println("게임을 종료합니다. ");
                 System.out.println(panel.score);
-                System.exit(0);
+//                System.exit(0);
+//                remove(panel);
 
             }
         };
