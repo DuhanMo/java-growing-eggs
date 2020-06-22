@@ -110,10 +110,10 @@ public class A_MainFrameView extends JFrame implements ActionListener{
 		}
 		
 
-		public static void main(String[] args) {
-			new A_MainFrameView();
-			
-		}
+//		public static void main(String[] args) {
+//			new A_MainFrameView();
+//
+//		}
 
 
 

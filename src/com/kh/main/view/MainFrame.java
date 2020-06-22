@@ -12,7 +12,7 @@ public class MainFrame extends JFrame{
     MyPanel panel = new MyPanel();
 
 
-    public void mainView() {
+    public MainFrame() {
 
 
 
@@ -26,14 +26,6 @@ public class MainFrame extends JFrame{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
-
-
-
-
-
-
-
     class MyPanel extends JPanel {
 
          public MyPanel() {

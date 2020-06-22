@@ -1,5 +1,7 @@
 package com.kh.breakegg.main.view;
 
+import com.kh.main.view.MainFrame;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -47,7 +49,8 @@ public class C_1LoginPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
+
 				try (BufferedReader br = new BufferedReader(new FileReader("userList.txt"));){
 //					한 파일에 저장
 					String result;
@@ -64,6 +67,7 @@ public class C_1LoginPanel extends JPanel{
 							System.out.println(strArr[i]);
 							System.out.println("확인용1");
 						} else {
+
 							BufferedWriter bw =null;
 							BufferedWriter bw1 =null;
 							BufferedWriter bw2 =null;
@@ -84,7 +88,11 @@ public class C_1LoginPanel extends JPanel{
 								bw1.flush();
 								bw2.flush();
 								bw3.flush();
+
 								//다음페이지로 넘어가는 기능
+								new MainFrame();
+								break;
+
 							} catch (IOException e1) {
 								e1.printStackTrace();
 							}finally {
@@ -130,7 +138,8 @@ public class C_1LoginPanel extends JPanel{
 //					}
 //					
 //				}
-				
+
+
 			}
 		});
 			
