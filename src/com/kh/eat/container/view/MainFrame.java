@@ -11,8 +11,13 @@ public class MainFrame extends JFrame {
     GamePanel panel;
     GameThread gThread;
     ExitThread exitThread;
+    Dialog dl = new Dialog(this,"게임 종료");
+    JButton btn = new JButton("확인");
 
     public MainFrame() {
+        dl.setLayout(new FlowLayout());
+        dl.setSize(210,80);
+        dl.setLocationRelativeTo(null);
 
         this.setTitle("Get Point!!");
 
@@ -100,9 +105,18 @@ public class MainFrame extends JFrame {
             public void run() {
                 System.out.println("게임을 종료합니다. ");
                 System.out.println(panel.score);
-//                System.exit(0);
-//                remove(panel);
-                dispose();
+                remove(panel);
+
+                dl.add(new JLabel("게임이 종료되었습니다. " + panel.score + "점입니다."));
+                dl.add(btn);
+                dl.setVisible(true);
+
+                btn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dispose();
+                    }
+                });
             }
         };
 
