@@ -11,8 +11,15 @@ public class MainFrame extends JFrame {
     GamePanel panel;
     GameThread gThread;
     ExitThread exitThread;
+    Dialog dl = new Dialog(this, "게임종료");
+    JButton btn = new JButton("확인");
+
 
     public MainFrame() {
+        dl.setLayout(new FlowLayout());
+        dl.setSize(200,80);
+        dl.setLocationRelativeTo(null);
+
 
         this.setTitle("Get Point!!");
 
@@ -20,12 +27,12 @@ public class MainFrame extends JFrame {
         this.setSize(700, 700);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new GamePanel();
         this.add(panel, BorderLayout.CENTER);
 
         this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gThread = new GameThread();
         gThread.start(); //run() 메소드 자동실행
 
@@ -33,6 +40,8 @@ public class MainFrame extends JFrame {
         // 타이머 쓰레드 객체로 가져와서 그 안에 타이머변수 가져오고 스케쥴메소드 이용(인자값으로 타이머태스크 변수와 딜레이값 적용)
         // 딜레이 후에 수행내용 시작
         exitThread.getExitTimer().schedule(exitThread.getExitTask(), 10000);
+
+
 
         addKeyListener(new KeyListener() {
             @Override
@@ -94,22 +103,34 @@ public class MainFrame extends JFrame {
     }
     class ExitThread {
         java.util.Timer exitTimer = new java.util.Timer(); // 타이머가 수행되는 변수
-        TimerTask exitTask = new TimerTask() { // 타이머가 수행할 내용을 작성해주는 객체
+        final TimerTask exitTask = new TimerTask() { // 타이머가 수행할 내용을 작성해주는 객체
             // timertask
             @Override
             public void run() {
                 System.out.println("게임을 종료합니다. ");
                 System.out.println(panel.score);
-//                System.exit(0);
-//                remove(panel);
-                dispose();
+
+                remove(panel);
+
+                dl.add(new JLabel("게임이 종료되었습니다. "+panel.score+"점입니다." ));
+                dl.add(btn);
+                dl.setVisible(true);
+
+                btn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // 점수를 객체에 보내줘야함
+
+                        dispose();
+
+                    }
+                });
+
             }
         };
-
         public Timer getExitTimer() {
             return exitTimer;
         }
-
         public TimerTask getExitTask() {
             return exitTask;
         }
