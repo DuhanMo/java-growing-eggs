@@ -42,24 +42,23 @@ public class B_StartFrameView extends Frame implements ActionListener {
 	public B_StartFrameView() {
 		JFrame stFrame = new JFrame();
 		stFrame.setTitle("미니프로젝트 - 시작 불러오기 화면"); // 타이틀
-		stFrame.setSize(600, 388);// 창크기 
+		stFrame.setSize(700, 700);// 창크기 
 		stFrame.setLocationRelativeTo(null);// 창이 가운데로 나오게
 		stFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 프로그램 종료
 		stFrame.setVisible(true);// 창 보임
 		
 		//배경 이미지
-		ImagePanel panel = new ImagePanel(new ImageIcon("./image/bg.jpg").getImage());
+		ImagePanel panel = new ImagePanel(new ImageIcon("./image/back1.png").getImage());
 
-		
-	
+
 		//새로 시작버튼
-		JButton nbtn = new JButton("새로시작");
-		nbtn.setSize(100, 40);
-		nbtn.setLocation(250,170);
+		JButton nbtn = new JButton(new ImageIcon("./image/startbtn.png"));
+		nbtn.setBounds(300, 270, 100, 50);
+		nbtn.setOpaque(false);
 		nbtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == 1) { //마우스 왼쪽버튼 
+				if(e.getButton() == 1) { 
 					//로그인 하는 창 생성
 					C_1Login c = new C_1Login();
 					c.loginFrame();
@@ -71,15 +70,12 @@ public class B_StartFrameView extends Frame implements ActionListener {
 		});
 		
 		//불러오기 버튼
-		JButton lbtn = new JButton("불러오기");
-		lbtn.setSize(100, 40);
-		lbtn.setLocation(250,230);
-
+		JButton lbtn = new JButton(new ImageIcon("./image/lbtn.png"));
+		lbtn.setBounds(300, 350, 100, 50);
 
 		
 		stFrame.add(nbtn);
 		stFrame.add(lbtn);
-		
 		stFrame.add(panel);
 		stFrame.pack();
 	}
@@ -90,7 +86,7 @@ public class B_StartFrameView extends Frame implements ActionListener {
 	}
 	
 	
-//	public static void main(String[] args) {
-//		new B_StartFrameView();
-//	} 구현 확인용
+	public static void main(String[] args) {
+		new B_StartFrameView();
+	} //구현 확인용
 }
