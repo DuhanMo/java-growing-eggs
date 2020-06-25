@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
         this.setTitle("Get Point!!");
 
         // 사이즈 설정 이후에 setLocationRelativeTo() 메소드 이용하면 화면 정중앙에 생성
-        this.setSize(700, 700);
+        this.setSize(900, 900);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

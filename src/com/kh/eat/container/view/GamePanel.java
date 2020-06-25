@@ -29,7 +29,7 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) { // 스윙 컴포넌트가 자신을 그리는 메소드
         if (width == 0 || height == 0) {
-            width = getWidth();
+            width = /*getWidth();*/ 1000;
             height = getHeight();
             // 리사이징
             imgBack = imgBack.getScaledInstance(width, height, Image.SCALE_SMOOTH);
