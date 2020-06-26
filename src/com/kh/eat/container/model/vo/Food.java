@@ -35,7 +35,7 @@ public class Food {
 
         Random rnd = new Random();
 
-        // 음식들이 화면 너비 골고루 젠이됨
+        // 음식들이 화면 너비 골고루 젠이됨 커밋용
         x = rnd.nextInt(width - w * 2) + w; //w ~ width - w
 
         // 화면 밖에서부터 떨어지는것처럼 보이게끔
