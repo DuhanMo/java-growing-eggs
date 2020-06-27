@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
         exitThread = new ExitThread();
         // 타이머 쓰레드 객체로 가져와서 그 안에 타이머변수 가져오고 스케쥴메소드 이용(인자값으로 타이머태스크 변수와 딜레이값 적용)
         // 딜레이 후에 수행내용 시작
-        exitThread.getExitTimer().schedule(exitThread.getExitTask(), 10000);
+        exitThread.getExitTimer().schedule(exitThread.getExitTask(), 20000);
 
         addKeyListener(new KeyListener() {
             @Override
